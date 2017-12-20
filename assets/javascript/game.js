@@ -1,16 +1,23 @@
 
+var arr = ["aaa", "asdfff", "edfrt", "ao"];
 
-function chooseWord (arr) {
-    return arr[Math.floor(Math.random()*arr.length)];
+function chooseWord(lista) {
+    return lista[Math.floor(Math.random() * lista.length)];
 }
 
-function blanksFromAnswer (chooceWord) {
-    
-    var result = ""; // This is the variable we want to use
-    
-    // Write a loop here to concatanate a '_' to result for
-    // every letter in answerWord.
-    
-    
+var word = chooseWord(arr);
+
+function blanksFromAnswer(palabra) {
+
+    var result = ""; 
+    for (var i = 0; i < palabra.length; i++) {
+        result += " _ ";
+    }
+
     return result;
 }
+
+var spaces = blanksFromAnswer(word);
+
+
+

@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/javascript/game.js"></script>
-    
+    <!-- <script src="assets/javascript/game.js"></script> -->
+
     <title>Hangman Game</title>
 </head>
+
 <body>
-    
+    <script>
+        var arr = ["aaa", "asdfff", "edfrt", "ao"];
+
+        function chooseWord(lista) {
+            return lista[Math.floor(Math.random() * lista.length)];
+        }
+
+        var word = chooseWord(arr);
+        console.log(word);
+
+        function blanksFromAnswer(palabra) {
+
+            var result = ""; // This is the variable we want to use
+            for (var i = 0; i < palabra.length; i++) {
+                result += " _ ";
+            }
+            // Write a loop here to concatanate a '_' to result for
+            // every letter in answerWord.
+
+            return result;
+        }
+
+        var spaces = blanksFromAnswer(word);
+
+        console.log(spaces);
+
+        var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+        if (guess === null) {
+
+            break;
+
+        } else if (guess.length !== 1) {
+
+            alert("Please enter a single letter.");
+
+        } else { }
+
+    </script>
+
 </body>
+
 </html>
