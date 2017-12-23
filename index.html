@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- <script src="assets/javascript/game.js"></script> -->
+    <<script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
 
     <title>Hangman Game</title>
 </head>
 
 <body>
+    <div id="test"></div>
     <script>
         var arr = ["aaa", "asdfff", "edfrt", "ao"];
 
@@ -23,33 +28,38 @@
         var word = chooseWord(arr);
         console.log(word);
 
+        var result = [];
+
         function blanksFromAnswer(palabra) {
-
-            var result = ""; // This is the variable we want to use
             for (var i = 0; i < palabra.length; i++) {
-                result += " _ ";
+                result[i] = "_";
             }
-            // Write a loop here to concatanate a '_' to result for
-            // every letter in answerWord.
-
             return result;
         }
 
         var spaces = blanksFromAnswer(word);
+        // $(".test").append("<div>");
+        // $("<div>").addClass("newDiv");
+        var newVar = $("<div>");
 
-        console.log(spaces);
+        spaces.forEach(function(space) {
+            $("#test").append(space + " ");
+        });
+        
 
-        var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+        // console.log(spaces);
 
-        if (guess === null) {
+        // var guess = prompt("Guess a letter, or click Cancel to stop playing.");
 
-            break;
+        // if (guess === null) {
 
-        } else if (guess.length !== 1) {
+        //     break;
 
-            alert("Please enter a single letter.");
+        // } else if (guess.length !== 1) {
 
-        } else { }
+        //     alert("Please enter a single letter.");
+
+        // } else { }
 
     </script>
 
