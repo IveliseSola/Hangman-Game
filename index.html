@@ -8,18 +8,15 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- <script src="assets/javascript/game.js"></script> -->
-    <<script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script>
+    <<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
-    <title>Hangman Game</title>
+        <title>Hangman Game</title>
 </head>
 
 <body>
     <div id="test"></div>
     <script>
-        var arr = ["aaa", "asdfff", "edfrt", "ao"];
+        var arr = ["mango", "cherry", "apple", "pineapple"];
 
         function chooseWord(lista) {
             return lista[Math.floor(Math.random() * lista.length)];
@@ -28,38 +25,58 @@
         var word = chooseWord(arr);
         console.log(word);
 
-        var result = [];
+        var wordSpaces = [];
 
         function blanksFromAnswer(palabra) {
             for (var i = 0; i < palabra.length; i++) {
-                result[i] = "_";
+                wordSpaces[i] = "_";
             }
-            return result;
+            return wordSpaces;
         }
 
         var spaces = blanksFromAnswer(word);
         // $(".test").append("<div>");
         // $("<div>").addClass("newDiv");
-        var newVar = $("<div>");
+        // var newVar = $("<div>");
 
-        spaces.forEach(function(space) {
+        spaces.forEach(function (space) {
             $("#test").append(space + " ");
         });
-        
-
         // console.log(spaces);
+        var remainingLetters = word.length;
 
-        // var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+        while (remainingLetters > 0) {
 
-        // if (guess === null) {
+            alert(wordSpaces.join(" "));
 
-        //     break;
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
 
-        // } else if (guess.length !== 1) {
+            if (guess === null) {
 
-        //     alert("Please enter a single letter.");
+                break;
 
-        // } else { }
+            } else if (guess.length !== 1) {
+
+                alert("Please enter a single letter.");
+
+            } else {
+
+
+                for (var j = 0; j < word.length; j++) {
+
+                    if (word[j] === guess) {
+
+                        wordSpaces[j] = guess;
+
+                        remainingLetters--;
+
+                    }
+
+                }
+
+            }
+        }
+        alert(wordSpaces.join(" "));
 
     </script>
 
