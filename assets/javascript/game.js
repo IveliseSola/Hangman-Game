@@ -1,63 +1,66 @@
+$(document).ready(function () {
 
+    var arr = ["loop", "semicolon", "boolean", "array", "variable", "function", "method", "parameter"];
 
-var arr = ["mango", "cherry", "apple", "pineapple"];
+    var word = chooseWord(arr);
+    var wordSpaces = [];
+    var spaces = blanksFromAnswer(word);
+    var remainingLetters = word.length;
+    var lettersAlreadyGuessed = [];
 
-function chooseWord(lista) {
-    return lista[Math.floor(Math.random() * lista.length)];
-}
+    drawWord();
 
-var word = chooseWord(arr);
-//console.log(word);
-
-var wordSpaces = [];
-
-function blanksFromAnswer(palabra) {
-    for (var i = 0; i < palabra.length; i++) {
-        wordSpaces[i] = "_";
+    function drawWord() {
+        $(".test").empty();
+        spaces.forEach(function (space) {
+            $(".test").append(space + " ");
+        });
     }
-    return wordSpaces;
-}
 
-var spaces = blanksFromAnswer(word);
-// $(".test").append("<div>");
-// $("<div>").addClass("newDiv");
-// var newVar = $("<div>");
+    function chooseWord(p) {
+        return p[Math.floor(Math.random() * p.length)];
+    }
 
-spaces.forEach(function (space) {
-    $("#test").append(space + " ");
-});
-// console.log(spaces);
-var remainingLetters = word.length;
+    function blanksFromAnswer(wordSelected) {
+        for (var i = 0; i < wordSelected.length; i++) {
+            wordSpaces[i] = "_";
+        }
+        return wordSpaces;
+    }
 
-while (remainingLetters > 0) {
+    
+    // jQuery.validator.addMethod("lettersonly", function(value, element) {
+    //     return this.optional(element) || /^[a-z]+$/i.test(value);
+    //   }, "Letters only please");
 
-    alert(wordSpaces.join(" "));
+    // $("#target").validate({
+    //     rules: {
+    //         letter: { lettersonly: true }
+    //     }
+    // });
+    
+      
+    $("#target").submit(function (event) {
 
-    var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+        var letter = $("input:first").val();
 
-    if (guess === null) {
-
-        break;
-
-    } else if (guess.length !== 1) {
-
-        alert("Please enter a single letter.");
-
-    } else {
-
-
-        for (var j = 0; j < word.length; j++) {
-
-            if (word[j] === guess) {
-
-                wordSpaces[j] = guess;
-
-                remainingLetters--;
-
+        
+        if (letter.length !== 1) {
+            alert("Please enter a single letter.");
+        } else {
+            lettersAlreadyGuessed += letter;
+            for (var j = 0; j < word.length; j++) {
+                if (word[j] === letter) {
+                    wordSpaces[j] = letter;
+                    remainingLetters--;
+                }
             }
-
         }
 
-    }
-}
-alert(wordSpaces.join(" "));
+        drawWord();
+        event.preventDefault();
+        this.reset();
+    })
+
+    // $(".guessedList").test(lettersAlreadyGuessed[]);
+});
