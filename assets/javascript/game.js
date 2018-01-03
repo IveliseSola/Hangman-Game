@@ -7,6 +7,7 @@ $(document).ready(function () {
     var spaces = blanksFromAnswer(word);
     var remainingLetters = word.length;
     var lettersAlreadyGuessed = [];
+    var newList = countElements(letter);
 
 
     drawWord();
@@ -18,9 +19,11 @@ $(document).ready(function () {
         });
     }
 
+
     function chooseWord(p1) {
         return p1[Math.floor(Math.random() * p1.length)];
     }
+
 
     function blanksFromAnswer(wordSelected) {
         for (var i = 0; i < wordSelected.length; i++) {
@@ -41,7 +44,6 @@ $(document).ready(function () {
     // });
 
 
-
     $("#target").submit(function (event) {
         var letter = $("input:first").val();
         if (letter.length !== 1) {
@@ -49,7 +51,7 @@ $(document).ready(function () {
         } else {
             list(letter);
             checkGuess(letter);
-            lostGame(letter);
+            lostGame(newList);
         }
         drawWord();
         event.preventDefault();
@@ -65,7 +67,6 @@ $(document).ready(function () {
                 winner(remainingLetters);
             }
         }
-        // lostGame(failed);
     }
 
 
@@ -79,56 +80,66 @@ $(document).ready(function () {
         }
     }
 
+    function countElements(p6) {
+        var failed = 0;
+        lettersAlreadyGuessed.push(p6);
+        // for (var i = 0; i < lettersAlreadyGuessed.length; i++){
+        //     if ( lettersAlreadyGuessed[i] != word[i]) {
+        //         failed++;
+        //     }
+        // }
+        return lettersAlreadyGuessed;
+        // return failed;
+    }
+
+
     function winner(p4) {
         if (p4 === 0) {
             $(".draw").remove();
             $(".guessedList").remove();
             $("#target").remove();
             var messageWinner = $(".winnerMessage");
-            var newDiv = $("<div>");
-            newDiv.text("Congrats you won!!!");
+            var newDiv = $(`<div>
+                <p>"Congrats, you won!"</p>
+                    <form id="target">
+                        <input type="submit" value="Play Again!">
+                    </form>
+                </div>`)
+            // var newDiv = $("<div>");
+            // newDiv.text("Congrats you won!!!");
+            // messageWinner.append(newDiv);
+            // var newButton = $("<input type='button'/>");
+            // newButton.addClass("play");
+            // newButton.text("Play Again!");
             messageWinner.append(newDiv);
-            var newButton = $("<button>");
-            newButton.addClass("play");
-            newButton.text("Play Again!");
-            messageWinner.append(newButton);
         }
-
     }
 
-    $(".play").click(function () {
 
-
+    $(".play").submit(function () {
+        return true;
     });
 
-    function lostGame(p5) {
-        var failed = 0;
-        for (var i = 0; i < 11; i++) {
-            for (var j = 0; j < word.length; j++) {
-                if (word[j] != p5) {
-                    failed++;
-                }
-            }
+
+
+    function lostGame(p) {
+        // lettersAlreadyGuessed.push(p);
+        if (p.length === 11) {
+            $(".draw").remove();
+            $(".guessedList").remove();
+            $("#target").remove();
+            var messageLostGame = $(".lostGameMessage");
+            // var divLostGame = $("<div>");
+            // divLostGame.text("Oops! Sorry, You've lost!");
+            // messageLostGame.append(divLostGame);
+            var newDiv = $(`<div>
+            <p>"Oops, you've lost!"</p>
+                <form id="target">
+                    <input type="submit" value="Play Again!">
+                </form>
+            </div>`)
+            messageLostGame.append(newDiv);
         }
-        $(".draw").remove();
-        $(".guessedList").remove();
-        $("#target").remove();
-        var messageLostGame = $(".lostGameMessage");
-        var divLostGame = $("<div>");
-        divLostGame.text("Oops! Sorry, You've lost!");
-        messageLostGame.append(divLostGame);
     }
-    // lostGame(failed);
-
-    // if (p5 === 11) {
-    //     $(".draw").remove();
-    //     $(".guessedList").remove();
-    //     $("#target").remove();
-    //     var messageLostGame = $(".lostGameMessage");
-    //     var divLostGame = $("<div>");
-    //     divLostGame.text("Oops! Sorry, You've lost!");
-    //     messageLostGame.append(divLostGame);
-    // }
-
 
 });
