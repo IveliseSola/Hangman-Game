@@ -1,14 +1,14 @@
 $(document).ready(function () {
 
     var arr = ["loop", "semicolon", "boolean", "array", "variable", "function", "method", "parameter"];
-
+    var validLetters =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "Z"];
     var word = chooseWord(arr);
     var wordSpaces = [];
     var spaces = blanksFromAnswer(word);
     var remainingLetters = word.length;
     var lettersAlreadyGuessed = [];
     var newList = countElements(letter);
-
+    // var keyPressed = event.key.toLowerCase();
 
     drawWord();
 
@@ -81,10 +81,12 @@ $(document).ready(function () {
     }
 
     function countElements(p6) {
-        var failed = 0;
+        // var failed = 0;
         lettersAlreadyGuessed.push(p6);
+        
         // for (var i = 0; i < lettersAlreadyGuessed.length; i++){
-        //     if ( lettersAlreadyGuessed[i] != word[i]) {
+        //     for ( var j = 0; j < word.length; j++)
+        //     if ( lettersAlreadyGuessed[i] != word[j]) {
         //         failed++;
         //     }
         // }
@@ -92,6 +94,20 @@ $(document).ready(function () {
         // return failed;
     }
 
+    // var  keyPressed = event.key.toLowcase();
+    // if (letterGuessed.length === 5) {
+
+    // }
+    // if (validLetters.indexOf(keyPressed) > -1 ){
+   
+    //     if ( lettersAlreadyGuessed.indexOf(keyPressed > -1)){
+    //         alert("you already guessed that letter");
+    //     }else {
+    //         letterGuessed.push(keyPressed);
+    //     }
+    // }else {
+    //     alert("you did not pressed a valid key")
+    // }
 
     function winner(p4) {
         if (p4 === 0) {
@@ -100,11 +116,13 @@ $(document).ready(function () {
             $("#target").remove();
             var messageWinner = $(".winnerMessage");
             var newDiv = $(`<div>
+               <img src ="https://www.arcamax.com/hangman/win.gif" alt="happy hangman">
                 <p>"Congrats, you won!"</p>
                     <form id="target">
                         <input type="submit" value="Play Again!">
                     </form>
                 </div>`)
+                
             // var newDiv = $("<div>");
             // newDiv.text("Congrats you won!!!");
             // messageWinner.append(newDiv);
@@ -133,6 +151,7 @@ $(document).ready(function () {
             // divLostGame.text("Oops! Sorry, You've lost!");
             // messageLostGame.append(divLostGame);
             var newDiv = $(`<div>
+            <img src = "https://thumbs.gfycat.com/SaneHeavyIrishwolfhound-max-1mb.gif" alt = "hangman">
             <p>"Oops, you've lost!"</p>
                 <form id="target">
                     <input type="submit" value="Play Again!">
