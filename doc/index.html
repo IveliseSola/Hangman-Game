@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+        <title>Hangman Game</title>
+</head>
+
+<body>
+    <div class="welcome">
+        <h1>Welcome to Hangman Game</h1>
+    </div>    
+  
+    <div class="instructions">
+        <p class="rules">Rules: Pick letters to guess the word, you will need to do it letter by letter, you will have 11 oportunities to guess the word. Good Luck!</p>
+        <img src="http://www.ukstudentlife.com/Ideas/Fun/Puzzles/Hangman.gif" alt="Hangman image">
+    </div>
+
+    <div>
+      <form id="target">
+        <label for="letter"></label>
+        <input id="letter" type="text">
+        <input type="submit" value="Go">
+      </form>
+    </div>
+    
+    <div class="draw"></div>
+    <div class="guessedList"></div>
+    <div class="winnerMessage"></div>
+    <div class="lostGameMessage"></div>
+
+    <script type="text/javascript" src="assets/javascript/game.js"> </script>
+</body>
+
+</html>
