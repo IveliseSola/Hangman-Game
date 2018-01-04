@@ -102,7 +102,7 @@ $(document).ready(function () {
             $("#target").remove();
             var messageWinner = $(".winnerMessage");
             var newDiv = $(`<div>
-               <img src ="https://www.arcamax.com/hangman/win.gif" alt="happy hangman">
+               <img src ="https://www.arcamax.com/hangman/win.gif" alt="happy hangman" style="height:250px;>
                 <p>"Congrats, you win!"</p>
                     <form id="target">
                         <input type="submit" value="Play Again!">
@@ -125,7 +125,7 @@ $(document).ready(function () {
             $("#target").remove();
             var messageLostGame = $(".lostGameMessage");
             var newDiv = $(`<div>
-            <img src = "https://thumbs.gfycat.com/SaneHeavyIrishwolfhound-max-1mb.gif" alt = "hangman">
+            <img src = "https://thumbs.gfycat.com/SaneHeavyIrishwolfhound-max-1mb.gif" alt = "hangman" style="height:250px;">
             <p>"Oops!"</p>
                 <form id="target">
                     <input type="submit" value="Play Again!">
