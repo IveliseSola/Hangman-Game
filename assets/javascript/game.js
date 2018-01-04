@@ -126,7 +126,7 @@ $(document).ready(function () {
             var messageLostGame = $(".lostGameMessage");
             var newDiv = $(`<div>
             <img src = "https://thumbs.gfycat.com/SaneHeavyIrishwolfhound-max-1mb.gif" alt = "hangman">
-            <p>"Oops, you've lost!"</p>
+            <p>"Oops!"</p>
                 <form id="target">
                     <input type="submit" value="Play Again!">
                 </form>
