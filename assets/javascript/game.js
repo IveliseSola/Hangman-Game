@@ -72,12 +72,14 @@ $(document).ready(function () {
         this.reset();
     })
  
+
     function printCountNeg(parameter) {
-        var newDiv = $("<span>");
-        newDiv.text(parameter +" ");
-        $(".count").append(newDiv);
+        var newSpan = $("<span>");
+        newSpan.text(parameter +" ");
+        $(".count").append(newSpan);
     }
 
+    
     function checkGuess(parameter) {
         for (var i = 0; i < word.length; i++) {
             if (word[i] === parameter) {
@@ -93,11 +95,9 @@ $(document).ready(function () {
         lettersAlreadyGuessed.push(parameter);
         var moreLetters = $(".guessedList");
         var newList = $("<div>");
-        var count = 11;
         for (var i = 0; i < lettersAlreadyGuessed.length; i++) {
             newList.text(lettersAlreadyGuessed[i]);
             moreLetters.append(newList);
-            count--;
         }
     }
 
