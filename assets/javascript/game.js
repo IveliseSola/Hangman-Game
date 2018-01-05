@@ -1,13 +1,14 @@
 $(document).ready(function () {
 
-    var arr = ["c", "php", "java", "javascript", "pascal", "objetivec", "html" ,"python","swift", "csharp", "sql"];
+    var languages = ["c", "php", "java", "javascript", "pascal", "objetivec", "html" ,"python","swift", "csharp", "sql"];
     var validLetters =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var word = chooseWord(arr);
+    var word = chooseWord(languages);
     var wordSpaces = [];
     var spaces = blanksFromAnswer(word);
     var remainingLetters = word.length;
     var lettersAlreadyGuessed = [];
     var failed = 0;
+    var countNeg = 11;
 
     drawWord();
 
@@ -52,9 +53,10 @@ $(document).ready(function () {
                     list(letter);
                 }
                 else {
-                    // notInWord
                     failed++;
-                    alert("Incorrect guess");
+                    countNeg--;
+                    printCountNeg(countNeg);
+                    // alert("Incorrect guess");
                     list(letter);
                     lostGame(failed);
                 }
@@ -69,7 +71,12 @@ $(document).ready(function () {
         event.preventDefault();
         this.reset();
     })
-
+ 
+    function printCountNeg(parameter) {
+        var newDiv = $("<span>");
+        newDiv.text(parameter +" ");
+        $(".count").append(newDiv);
+    }
 
     function checkGuess(parameter) {
         for (var i = 0; i < word.length; i++) {
