@@ -1,4 +1,8 @@
 h1 {
     text-align: center;
-    
+}
+
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(../images/programming.png);
+    background-size: cover;
 }
